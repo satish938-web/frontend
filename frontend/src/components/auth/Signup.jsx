@@ -22,7 +22,7 @@ const Signup = () => {
         role: "",
         file: ""
     });
-    const { loading, user } = useSelector(store => store.auth);
+    const { loading, user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

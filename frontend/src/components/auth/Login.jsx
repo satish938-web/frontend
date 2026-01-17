@@ -18,7 +18,7 @@ const Login = () => {
         password: "",
         role: "",
     });
-    const { loading, user } = useSelector(store => store.auth);
+    const { loading, user } = useSelector(state => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
