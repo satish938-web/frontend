@@ -21,15 +21,15 @@ const HeroSection = () => {
                 <span className='mx-auto px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-[#F83002] font-medium text-xs sm:text-sm'>Welcome to CareerConnect</span>
                 <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-2 animate-fade-in'>Find Your Path & <br className="hidden sm:block" /> Build Your <span className='text-yellow-500'>Future</span></h1>
                 <p className='text-sm sm:text-base px-4 max-w-2xl mx-auto'>Discover thousands of opportunities tailored to your skills and aspirations. Start your journey today!</p>
-                <div className='flex flex-col sm:flex-row w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-2 sm:gap-4 mx-auto'>
+                <div className='flex w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[40%] shadow-lg border border-gray-200 pl-4 pr-2 rounded-full items-center gap-2 mx-auto max-w-2xl'>
                     <input
                         type="text"
                         placeholder='Search for your dream job'
                         onChange={(e) => setQuery(e.target.value)}
-                        className='outline-none border-none w-full text-sm sm:text-base px-2 py-2 sm:py-0 rounded-l-full'
+                        className='outline-none border-none flex-1 text-sm sm:text-base py-2 bg-transparent'
                     />
-                    <Button onClick={searchJobHandler} className="rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shrink-0 w-full sm:w-auto transition-all duration-300">
-                        <Search className='h-4 w-4 sm:h-5 sm:w-5 mx-auto' />
+                    <Button onClick={searchJobHandler} className="rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shrink-0 px-4 py-2 transition-all duration-300">
+                        <Search className='h-4 w-4 sm:h-5 sm:w-5' />
                     </Button>
                 </div>
                 <div className='mt-4'>

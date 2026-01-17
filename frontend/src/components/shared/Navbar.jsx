@@ -35,11 +35,6 @@ const Navbar = () => {
                 <div className='flex items-center justify-between mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8'>
                     <div className='flex items-center'>
                         <h1 className='text-xl sm:text-2xl font-bold'>Job<span className='text-yellow-400'>Search</span></h1>
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className='ml-4 md:hidden p-2 rounded-md hover:bg-gray-700'>
-                            {mobileMenuOpen ? <X className='h-6 w-6 text-white' /> : <Menu className='h-6 w-6 text-white' />}
-                        </button>
                     </div>
                     <div className='hidden md:flex items-center gap-6 lg:gap-12'>
                         <ul className='flex font-medium items-center gap-3 lg:gap-5'>
@@ -109,6 +104,11 @@ const Navbar = () => {
                             )
                         }
                     </div>
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className='md:hidden p-2 rounded-md hover:bg-gray-700'>
+                        {mobileMenuOpen ? <X className='h-6 w-6 text-white' /> : <Menu className='h-6 w-6 text-white' />}
+                    </button>
                 </div>
                 {mobileMenuOpen && (
                     <div className='md:hidden bg-gray-900 p-4'>
