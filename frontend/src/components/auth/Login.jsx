@@ -32,13 +32,19 @@ const Login = () => {
         try {
             dispatch(setLoading(true));
             console.log("📤 Sending request to:", `${USER_API_END_POINT}/login`);
+            console.log("📤 Request data:", input);
+            
             const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
             });
-            console.log("📥 Response received:", res.data);
+            
+            console.log("📥 Full response:", res);
+            console.log("📥 Response data:", res.data);
+            console.log("📥 Response status:", res.status);
+            
             if (res.data.success) {
                 console.log("✅ Login successful, setting user:", res.data.user);
                 dispatch(setUser(res.data.user));
@@ -46,11 +52,21 @@ const Login = () => {
                 toast.success(res.data.message);
             } else {
                 console.log("❌ Login failed:", res.data);
+                toast.error(res.data.message || "Login failed");
             }
         } catch (error) {
             console.error("💥 Frontend login error:", error);
-            console.error("💥 Error response:", error.response?.data);
-            toast.error(error.response?.data?.message || "Login failed");
+            console.error("💥 Error response:", error.response);
+            console.error("💥 Error status:", error.response?.status);
+            console.error("💥 Error data:", error.response?.data);
+            
+            if (error.response?.status === 500) {
+                toast.error("Server error. Please try again later.");
+            } else if (error.response?.data?.message) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error("Login failed. Please check your credentials.");
+            }
         } finally {
             dispatch(setLoading(false));
         }
