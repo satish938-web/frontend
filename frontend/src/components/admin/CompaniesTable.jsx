@@ -11,7 +11,7 @@ import { toast } from 'sonner'
 import { updateCompanyStatusInStore } from '@/redux/companySlice'
 
 const CompaniesTable = () => {
-    const { companies, searchCompanyByText } = useSelector(store => store.company);
+    const { companies, searchCompanyByText } = useSelector(state => state.company);
     const [filterCompany, setFilterCompany] = useState(companies);
     const navigate = useNavigate();
     const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { Badge } from './ui/badge'
 import { useSelector } from 'react-redux'
 
 const AppliedJobTable = () => {
-    const { allAppliedJobs } = useSelector(store => store.job);
+    const { allAppliedJobs } = useSelector(state => state.job);
     return (
         <div className="overflow-x-auto">
             <Table>
