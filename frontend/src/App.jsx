@@ -3,6 +3,7 @@ import Navbar from './components/shared/Navbar'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import ResetPassword from './components/auth/ResetPassword'
+import BackendTest from './components/test/BackendTest'
 import Home from './components/Home'
 import Jobs from './components/Jobs'
 import Browse from './components/Browse'
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
   {
     path: '/reset-password',
     element: <ResetPassword />
+  },
+  {
+    path: '/test-backend',
+    element: <BackendTest />
   },
   {
     path: "/jobs",
