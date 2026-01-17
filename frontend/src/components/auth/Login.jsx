@@ -28,22 +28,29 @@ const Login = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log("🔐 Frontend login attempt:", input);
         try {
             dispatch(setLoading(true));
+            console.log("📤 Sending request to:", `${USER_API_END_POINT}/login`);
             const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
             });
+            console.log("📥 Response received:", res.data);
             if (res.data.success) {
+                console.log("✅ Login successful, setting user:", res.data.user);
                 dispatch(setUser(res.data.user));
                 navigate("/");
                 toast.success(res.data.message);
+            } else {
+                console.log("❌ Login failed:", res.data);
             }
         } catch (error) {
-            console.log(error);
-            toast.error(error.response.data.message);
+            console.error("💥 Frontend login error:", error);
+            console.error("💥 Error response:", error.response?.data);
+            toast.error(error.response?.data?.message || "Login failed");
         } finally {
             dispatch(setLoading(false));
         }
