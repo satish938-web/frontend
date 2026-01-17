@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://jobportalfinal-backend.vercel.app";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://job-portal-backend.onrender.com";
 
 // Debug: Log the API URL
 console.log("API_BASE_URL:", API_BASE_URL);
