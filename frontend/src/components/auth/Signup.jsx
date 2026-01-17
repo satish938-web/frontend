@@ -22,7 +22,7 @@ const Signup = () => {
         role: "",
         file: ""
     });
-    const { loading, user } = useSelector(state => state.auth);
+    const { loading, user } = useSelector(store => store.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -51,6 +51,15 @@ const Signup = () => {
                 withCredentials: true,
             });
             if (res.data.success) {
+                // Reset form after successful signup
+                setInput({
+                    fullname: "",
+                    email: "",
+                    phoneNumber: "",
+                    password: "",
+                    role: "",
+                    file: ""
+                });
                 navigate("/login");
                 toast.success(res.data.message);
             }

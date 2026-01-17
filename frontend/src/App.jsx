@@ -2,11 +2,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/shared/Navbar'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
-import ResetPassword from './components/auth/ResetPassword'
-import BackendTest from './components/test/BackendTest'
 import Home from './components/Home'
 import Jobs from './components/Jobs'
 import Browse from './components/Browse'
+import BrowseCompanies from './components/BrowseCompanies'
 import Profile from './components/Profile'
 import JobDescription from './components/JobDescription'
 import Companies from './components/admin/Companies'
@@ -32,14 +31,6 @@ const appRouter = createBrowserRouter([
     element: <Signup />
   },
   {
-    path: '/reset-password',
-    element: <ResetPassword />
-  },
-  {
-    path: '/test-backend',
-    element: <BackendTest />
-  },
-  {
     path: "/jobs",
     element: <Jobs />
   },
@@ -50,6 +41,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/browse",
     element: <Browse />
+  },
+  {
+    path: "/browse/companies",
+    element: <BrowseCompanies />
   },
   {
     path: "/profile",

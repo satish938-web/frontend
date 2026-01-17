@@ -18,7 +18,7 @@ const Login = () => {
         password: "",
         role: "",
     });
-    const { loading, user } = useSelector(state => state.auth);
+    const { loading, user } = useSelector(store => store.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -28,45 +28,28 @@ const Login = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log("🔐 Frontend login attempt:", input);
         try {
             dispatch(setLoading(true));
-            console.log("📤 Sending request to:", `${USER_API_END_POINT}/login`);
-            console.log("📤 Request data:", input);
-            
             const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
             });
-            
-            console.log("📥 Full response:", res);
-            console.log("📥 Response data:", res.data);
-            console.log("📥 Response status:", res.status);
-            
             if (res.data.success) {
-                console.log("✅ Login successful, setting user:", res.data.user);
                 dispatch(setUser(res.data.user));
+                // Reset form after successful login
+                setInput({
+                    email: "",
+                    password: "",
+                    role: "",
+                });
                 navigate("/");
                 toast.success(res.data.message);
-            } else {
-                console.log("❌ Login failed:", res.data);
-                toast.error(res.data.message || "Login failed");
             }
         } catch (error) {
-            console.error("💥 Frontend login error:", error);
-            console.error("💥 Error response:", error.response);
-            console.error("💥 Error status:", error.response?.status);
-            console.error("💥 Error data:", error.response?.data);
-            
-            if (error.response?.status === 500) {
-                toast.error("Server error. Please try again later.");
-            } else if (error.response?.data?.message) {
-                toast.error(error.response.data.message);
-            } else {
-                toast.error("Login failed. Please check your credentials.");
-            }
+            console.log(error);
+            toast.error(error.response.data.message);
         } finally {
             dispatch(setLoading(false));
         }

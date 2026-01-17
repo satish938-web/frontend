@@ -19,15 +19,22 @@ const companySlice = createSlice({
             state.searchCompanyByText = action.payload;
         },
         updateCompanyStatusInStore:(state, action) => {
-            const { id, status } = action.payload;
+            const { companyId, status } = action.payload;
             state.companies = state.companies.map((company) =>
-                company._id === id ? { ...company, status } : company
+                company._id === companyId ? { ...company, status } : company
             );
-            if (state.singleCompany && state.singleCompany._id === id) {
+            if (state.singleCompany && state.singleCompany._id === companyId) {
                 state.singleCompany = { ...state.singleCompany, status };
+            }
+        },
+        deleteCompanyFromStore:(state, action) => {
+            const companyId = action.payload;
+            state.companies = state.companies.filter((company) => company._id !== companyId);
+            if (state.singleCompany && state.singleCompany._id === companyId) {
+                state.singleCompany = null;
             }
         }
     }
 });
-export const {setSingleCompany, setCompanies,setSearchCompanyByText, updateCompanyStatusInStore} = companySlice.actions;
+export const {setSingleCompany, setCompanies,setSearchCompanyByText, updateCompanyStatusInStore, deleteCompanyFromStore} = companySlice.actions;
 export default companySlice.reducer;

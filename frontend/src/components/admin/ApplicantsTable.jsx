@@ -11,7 +11,7 @@ import { setAllApplicants } from '@/redux/applicationSlice';
 const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
-    const { applicants } = useSelector(state => state.application);
+    const { applicants } = useSelector(store => store.application);
     const dispatch = useDispatch();
 
     const refreshApplicants = async () => {

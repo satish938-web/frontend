@@ -12,7 +12,7 @@ import { toast } from 'sonner'
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
     const [loading, setLoading] = useState(false);
-    const { user } = useSelector(state => state.auth);
+    const { user } = useSelector(store => store.auth);
 
     const [input, setInput] = useState({
         fullname: user?.fullname || "",

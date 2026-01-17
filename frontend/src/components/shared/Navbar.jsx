@@ -11,7 +11,7 @@ import { setUser } from '@/redux/authSlice'
 import { toast } from 'sonner'
 
 const Navbar = () => {
-    const { user } = useSelector(state => state.auth);
+    const { user } = useSelector(store => store.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -49,6 +49,7 @@ const Navbar = () => {
                                         <li><Link to="/" className="hover:text-yellow-400 transition-colors">Home</Link></li>
                                         <li><Link to="/jobs" className="hover:text-yellow-400 transition-colors">Jobs</Link></li>
                                         <li><Link to="/browse" className="hover:text-yellow-400 transition-colors">Browse</Link></li>
+                                        <li><Link to="/browse/companies" className="hover:text-yellow-400 transition-colors">Companies</Link></li>
                                     </>
                                 )
                             }
@@ -94,8 +95,8 @@ const Navbar = () => {
                                                 }
 
                                                 <div className='flex w-fit items-center gap-2 cursor-pointer'>
-                                                    <LogOut />
-                                                    <Button onClick={logoutHandler} variant="link">Logout</Button>
+                                                    <LogOut className="text-red-500" />
+                                                    <Button onClick={logoutHandler} variant="link" className="text-red-500 hover:text-red-600">Logout</Button>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,6 +117,7 @@ const Navbar = () => {
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/jobs">Jobs</Link></li>
                             <li><Link to="/browse">Browse</Link></li>
+                            <li><Link to="/browse/companies">Companies</Link></li>
                             {
                                 !user ? (
                                     <>
@@ -125,7 +127,7 @@ const Navbar = () => {
                                 ) : (
                                     <>
                                         <li><Link to="/profile">Profile</Link></li>
-                                        <li><button onClick={logoutHandler}>Logout</button></li>
+                                        <li><button onClick={logoutHandler} className="text-red-500 hover:text-red-600">Logout</button></li>
                                     </>
                                 )
                             }
